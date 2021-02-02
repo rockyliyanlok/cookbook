@@ -1,7 +1,15 @@
-// const withPWA = require('next-pwa')
+const appConfig = require('./config/app.config')
+const withPWA = require('next-pwa')
  
-// module.exports = withPWA({
-//   pwa: {
-//     dest: 'public'
-//   }
-// })
+const publicRuntimeConfig = {
+  ...appConfig
+}
+
+require('dotenv').config()
+
+module.exports = withPWA({
+  publicRuntimeConfig,
+  pwa: {
+    dest: 'public'
+  }
+})

@@ -36,3 +36,8 @@ yarn-error.log*
 # next-pwa
 /public/sw.js*
 /public/workbox-*.js*
+
+# dotenv
+.env
+.env-*
+
