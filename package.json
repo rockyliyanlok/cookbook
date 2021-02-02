@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-pwa-responsive",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.0.1",
+    "next-pwa": "^3.1.5",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-styled-flexboxgrid": "^3.2.1",
+    "styled-components": "^5.2.0",
+    "styled-reset": "^4.2.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.11.1"
+  }
+}
