@@ -3,8 +3,8 @@ import base from './base'
 import reset from 'styled-reset'
  
 const GlobalStyle = createGlobalStyle`
- ${reset}
- ${base}
+  ${reset}
+  ${base}
 `
  
 export default GlobalStyle

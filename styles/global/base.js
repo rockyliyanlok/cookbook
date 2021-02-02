@@ -4,8 +4,9 @@ import theme from '../theme'
 export default css`
  html,
  body {
-   background-color: ${theme.colors.mineShaft};
-   color: ${theme.colors.white};
+   background-color: ${theme.colors.white};
+   color: ${theme.colors.bluewood};
+   font-family: 'Roboto', sans-serif;
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
    -webkit-tap-highlight-color: transparent;

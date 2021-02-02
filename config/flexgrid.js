@@ -2,14 +2,14 @@ module.exports = {
   baseFontSize: 16,
   breakpoints: {
     xs: 0,
-    sm: 640,
+    sm: 576,
     md: 768,
-    lg: 1024
+    lg: 1200
   },
   container: {
-    sm: 640,
-    md: 768,
-    lg: 1024
+    sm: 540,
+    md: 720,
+    lg: 1140
   },
   gridSize: 12,
   gutterWidth: 16,
