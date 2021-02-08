@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server",
     "build": "next build",
-    "start": "next start"
+    "start": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "lodash": "^4.17.20",
     "next": "10.0.1",
     "next-pwa": "^3.1.5",
@@ -20,6 +22,7 @@
     "styled-reset": "^4.2.3"
   },
   "devDependencies": {
+    "@babel/register": "^7.12.13",
     "babel-plugin-styled-components": "^1.11.1"
   }
 }
