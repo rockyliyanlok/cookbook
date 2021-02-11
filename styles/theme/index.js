@@ -10,7 +10,10 @@ import {
 export default {
   colors: {
     bluewood: '#2d4558',
-    white: '#ffffff'
+    white: '#ffffff',
+    tundora: '#444444',
+    silver05: 'rgba(196,196,196,0.55)',
+    gallery: '#eaeaea'
   },
   flexboxgrid: {
     gridSize, // columns
