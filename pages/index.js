@@ -12,7 +12,7 @@ const Index = ({
   <RecipeCards recipes={recipes} />
 )
 
-export async function getStaticProps() {
+export async function getServerSideProps () {
   const response = await axios(CACHED_SPOONACULAR_RECIPE_SEARCH_URI, {
     params: {
       apiKey: SPOONACULAR_APIKEY,
