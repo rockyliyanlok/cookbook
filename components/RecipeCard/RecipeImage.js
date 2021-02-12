@@ -16,10 +16,6 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
-  position: relative;
-  img {
-    object-fit: cover;
-  }
 `
 
 const RecipeImage = ({
