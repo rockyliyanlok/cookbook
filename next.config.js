@@ -11,5 +11,8 @@ module.exports = withPWA({
   publicRuntimeConfig,
   pwa: {
     dest: 'public'
+  },
+  images: {
+    domains: ['spoonacular.com'],
   }
 })
