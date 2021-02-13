@@ -9,16 +9,18 @@ const { publicRuntimeConfig: { SPOONACULAR_APIKEY, CACHED_SPOONACULAR_RECIPE_SEA
 const Index = () => {
   const [recipes, setRecipes] = useState([])
 
+  const fetchRecipes = async () => {
+    const response = await axios(CACHED_SPOONACULAR_RECIPE_SEARCH_URI, {
+      params: {
+        apiKey: SPOONACULAR_APIKEY,
+        number: 24
+      }
+    })
+    setRecipes(_get(response, 'data.results', []))
+  }
+
   useEffect(() => {
-    (async () => { 
-      const response = await axios(CACHED_SPOONACULAR_RECIPE_SEARCH_URI, {
-        params: {
-          apiKey: SPOONACULAR_APIKEY,
-          number: 24
-        }
-      })
-      setRecipes(_get(response, 'data.results', []))
-    })()
+    fetchRecipes()
 
     return () => {}
   }, [])
