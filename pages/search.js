@@ -70,10 +70,10 @@ const Search = ({
   }
 
   useEffect(() => {
-    router.push({
-      pathname: '/search',
-      query: { query: searchQuery }
-    }, undefined , { shallow: true })
+    router.push(Object.assign({},
+      { pathname: '/search' },
+      (!_isNil(searchQuery) && !_isEmpty(searchQuery)) ? { query: { query: searchQuery } } : {}
+    ), undefined , { shallow: true })
     searchRecipes(searchQuery)
 
     return () => {
