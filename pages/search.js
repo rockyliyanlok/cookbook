@@ -8,6 +8,7 @@ import RecipeCards from '../components/RecipeCards'
 import SearchBar from '../components/SearchBar'
 import styled from 'styled-components'
 import useDebounce from '../hooks/useDebouce'
+import { useRouter } from 'next/router'
 
 let axiosCancelTokenSource
 
@@ -19,10 +20,14 @@ const Heading = styled.div`
   text-align: center;
 `
 
-const Search = () => {
+const Search = ({
+  urlQuery
+}) => {
+  const router = useRouter()
+
   const [loading, setLoading] = useState(0)
   const [recipes, setRecipes] = useState([])
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState((!_isNil(urlQuery) && !_isEmpty(urlQuery)) ? urlQuery : '')
 
   const searchQuery = useDebounce(query, 500)
 
@@ -65,6 +70,10 @@ const Search = () => {
   }
 
   useEffect(() => {
+    router.push({
+      pathname: '/search',
+      query: { query: searchQuery }
+    }, undefined , { shallow: true })
     searchRecipes(searchQuery)
 
     return () => {
@@ -83,6 +92,11 @@ const Search = () => {
       <RecipeCards loading={loading !== 0} recipes={recipes} />
     </>
   )
+}
+
+Search.getInitialProps = async ctx => {
+  const urlQuery = _get(ctx, 'query.query', {})
+  return { urlQuery }
 }
 
 export default Search
