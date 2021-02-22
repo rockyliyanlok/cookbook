@@ -1,7 +1,12 @@
+import _get from 'lodash/get'
 import _has from 'lodash/has'
 import React from 'react'
 
 const OpenSearchXML = () => (<></>)
+
+const getHost = ({ headers }) => {
+  return _get(headers, 'host')
+}
 
 const getProtocol = ({ headers }) => {
   return _has(headers, 'x-forwarded-proto') ? headers['x-forwarded-proto'] :
@@ -9,6 +14,7 @@ const getProtocol = ({ headers }) => {
 }
 
 export async function getServerSideProps ({ req, res }) {
+  const host = getHost(req)
   const protocol = getProtocol(req)
 
   res.setHeader('Content-Type', 'html/xml')
