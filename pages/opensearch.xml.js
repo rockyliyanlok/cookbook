@@ -1,9 +1,11 @@
+import _has from 'lodash/has'
 import React from 'react'
 
 const OpenSearchXML = () => (<></>)
 
 const getProtocol = ({ headers }) => {
-  return headers['x-forwarded-proto'] || headers.referer.split('://')[0] || 'http'
+  return _has(headers, 'x-forwarded-proto') ? headers['x-forwarded-proto'] :
+    _has(headers, 'referer') ? headers.referer.split('://')[0] : 'http'
 }
 
 export async function getServerSideProps ({ req, res }) {
