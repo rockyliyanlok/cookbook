@@ -2,6 +2,10 @@ import React from 'react'
 
 const OpenSearchXML = () => (<></>)
 
+const getProtocol = ({ headers }) => {
+  return headers['x-forwarded-proto'] || headers.referer.split('://')[0] || 'http'
+}
+
 export async function getServerSideProps ({ req, res }) {
   // const protocol = referer.split('://')[0]
 
@@ -18,9 +22,17 @@ export async function getServerSideProps ({ req, res }) {
   // `)
   // res.end()
 
+  // const protocol = req.headers.referer.split('://')[0]
+
   res.setHeader('Content-Type', 'application/json')
   res.write(JSON.stringify({
-    headers: req.headers
+    headers: req.headers,
+    host: req.headers.host,
+    referer: req.headers.referer.split('://')[0],
+    protocol: getProtocol(req)
+    // protocol: req.headers['x-forwarded-proto'] || req.headers.referer.split('://')[0] || 'http'
+    // protocol: getProtocol(req)
+    // protocol: req.headers.referer.split(':')[0]
   }))
   res.end()
 
