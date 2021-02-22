@@ -28,7 +28,7 @@ export async function getServerSideProps ({ req, res }) {
   res.write(JSON.stringify({
     headers: req.headers,
     host: req.headers.host,
-    referer: req.headers.referer.split('://')[0],
+    // referer: req.headers.referer.split('://')[0],
     protocol: getProtocol(req)
     // protocol: req.headers['x-forwarded-proto'] || req.headers.referer.split('://')[0] || 'http'
     // protocol: getProtocol(req)
