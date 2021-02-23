@@ -17,17 +17,15 @@ export async function getServerSideProps ({ req, res }) {
   const host = getHost(req)
   const protocol = getProtocol(req)
 
-  res.setHeader('Content-Type', 'html/xml')
-  res.write(`
-    <?xml version="1.0" encoding="UTF-8"?>
-    <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-      <ShortName>CookBook</ShortName>
-      <Description>Find recipes</Description>
-      <InputEncoding>UTF-8</InputEncoding>
-      <Image width="16" height="16" type="image/x-icon">${protocol}://${host}/favicon.ico</Image>
-      <Url type="text/html" method="get" template="${protocol}://${host}/search?query={searchTerms}"/>
-    </OpenSearchDescription>
-  `)
+  res.setHeader('Content-Type', 'application/xml')
+  res.write(`<?xml version="1.0" encoding="UTF-8"?>
+  <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>CookBook</ShortName>
+    <Description>Find recipes</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image width="16" height="16" type="image/x-icon">${protocol}://${host}/favicon.ico</Image>
+    <Url type="text/html" method="get" template="${protocol}://${host}/search?query={searchTerms}"/>
+  </OpenSearchDescription>`)
   res.end()
 
   return { props: {} }
