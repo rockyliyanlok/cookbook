@@ -25,7 +25,7 @@ const Search = ({
 }) => {
   const router = useRouter()
 
-  const [loading, setLoading] = useState(0)
+  const [loading, setLoading] = useState(false)
   const [recipes, setRecipes] = useState([])
   const [query, setQuery] = useState((!_isNil(urlQuery) && !_isEmpty(urlQuery)) ? urlQuery : '')
 
@@ -48,7 +48,7 @@ const Search = ({
 
       axiosCancelTokenSource = axios.CancelToken.source()
     
-      setLoading(count => (count + 1))
+      setLoading(true)
 
       const response = await axios(CACHED_SPOONACULAR_RECIPE_SEARCH_URI, {
         cancelToken: axiosCancelTokenSource.token,
@@ -60,12 +60,12 @@ const Search = ({
       })
 
       setRecipes(_get(response, 'data.results', []))
-      setLoading(count => (count - 1))
+      setLoading(false)
     } catch (error) {
       if (!axios.isCancel(error)) {
         console.error(error)
       }
-      setLoading(count => (count - 1))
+      setLoading(false)
     }
   }
 
@@ -89,7 +89,7 @@ const Search = ({
         Search Recipes
       </Heading>
       <SearchBar query={query} onChange={onChange} />
-      <RecipeCards loading={loading !== 0} recipes={recipes} />
+      <RecipeCards loading={loading} recipes={recipes} />
     </>
   )
 }

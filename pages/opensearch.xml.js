@@ -19,12 +19,13 @@ export async function getServerSideProps ({ req, res }) {
 
   res.setHeader('Content-Type', 'application/xml')
   res.write(`<?xml version="1.0" encoding="UTF-8"?>
-  <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
     <ShortName>Cookbook</ShortName>
     <Description>Find recipes</Description>
     <InputEncoding>UTF-8</InputEncoding>
     <Image width="16" height="16" type="image/x-icon">${protocol}://${host}/favicon.ico</Image>
     <Url type="text/html" method="get" template="${protocol}://${host}/search?query={searchTerms}"/>
+    <moz:SearchForm>${protocol}://${host}/search</moz:SearchForm>
   </OpenSearchDescription>`)
   res.end()
 
